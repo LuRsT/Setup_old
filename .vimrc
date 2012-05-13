@@ -296,3 +296,12 @@ autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
 " command! Folder   :call :setfoldopen=all<CR>:setfolopen=all<CR>
 " command! NoFolder :call :setfoldopen=none<CR>:setfolopen=none<CR>
 
+" Locate word
+map <expr> L LocateWord()
+
+function! LocateWord()
+    let target = expand('<cWORD>')
+    !locate target
+endfunction
+
+
