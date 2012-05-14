@@ -51,9 +51,6 @@ set autowrite
 "Handle Mac and DOS line-endings but prefer Unix endings
 set fileformats=unix,mac,dos
 
-" Control vim with mouse
-set mouse=a
-
 "NERDTree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -91,16 +88,16 @@ map <F1> <Esc>
 imap <F1> <Esc>
 
 " Para toggle number ao mesmo tempo que toggla mouse
-function ToggleMouse()
-    if &mouse == ""
-        set mouse=a
-    else
-        set mouse=
-    endif
-endfunction
+"function ToggleMouse()
+"    if &mouse == ""
+"        set mouse=a
+"    else
+"        set mouse=
+"    endif
+"endfunction
 
 " Para ficar em modo old style
-nmap <silent> <F2> :set invnumber<CR>:call ToggleMouse()<CR>:NERDTreeClose<CR> 
+nmap <silent> <F2> :set invnumber<CR>:NERDTreeClose<CR> 
 
 " rot13 of current file -> play stuff!
 "map <F3> ggVGg?
