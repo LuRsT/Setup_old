@@ -284,8 +284,9 @@ nmap <Space> <PageDown>
 
 
 " Execute files
-autocmd FileType perl   nmap W :!clear;echo;echo;perl %;echo;echo;echo<CR>
-autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
+" Need to change to other char, I use W too much
+"autocmd FileType perl   nmap W :!clear;echo;echo;perl %;echo;echo;echo<CR>
+"autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
 
 
 "command! -buffer -bar -range=0 Run :call s:run(<count>, '<args>')
@@ -293,12 +294,6 @@ autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
 " command! Folder   :call :setfoldopen=all<CR>:setfolopen=all<CR>
 " command! NoFolder :call :setfoldopen=none<CR>:setfolopen=none<CR>
 
-" Locate word
-map <expr> L LocateWord()
-
-function! LocateWord()
-    let target = expand('<cWORD>')
-    !locate target
-endfunction
-
+" Locate Module
+map L :cexpr system("locate_mod.pl " .  shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
 
