@@ -280,13 +280,9 @@ augroup VisibleNaughtiness
     autocmd BufEnter  *       endif
 augroup END
 
-nmap <Space> <PageDown>
-
-
 " Execute files
-" Need to change to other char, I use W too much
-"autocmd FileType perl   nmap W :!clear;echo;echo;perl %;echo;echo;echo<CR>
-"autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
+autocmd FileType perl   nmap W :!clear;echo;echo;perl %;echo;echo;echo<CR>
+autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
 
 
 "command! -buffer -bar -range=0 Run :call s:run(<count>, '<args>')
@@ -295,5 +291,4 @@ nmap <Space> <PageDown>
 " command! NoFolder :call :setfoldopen=none<CR>:setfolopen=none<CR>
 
 " Locate Module
-map L :cexpr system("locate_mod.pl " .  shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
-
+map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
