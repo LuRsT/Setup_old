@@ -284,6 +284,8 @@ augroup END
 autocmd FileType perl   nmap W :!clear;echo;echo;perl %;echo;echo;echo<CR>
 autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
 
+"nmap <Space> <PageDown>
+
 
 "command! -buffer -bar -range=0 Run :call s:run(<count>, '<args>')
 " Do this, put in a function a toggler for folds
