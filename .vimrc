@@ -77,6 +77,12 @@ map <C-Down>  <PageDown>
 map <C-Left>  gT
 map <C-Right> gt
 
+" Easy navigation with splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 "Para criar uma janela e mostrar o prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
