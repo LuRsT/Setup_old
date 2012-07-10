@@ -70,6 +70,10 @@ au bufnewfile *.t 0r ~/.vim/skeletons/template.t
 "Statusline catita
 "set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{fugitive#statusline()}
 "set laststatus=2
+"
+
+" Map Leader
+let mapleader = ","
 
 " Map arrow keys to useful stuff
 map <C-Up>    <PageUp>
@@ -82,6 +86,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+nnoremap <leader>a :Ack
 
 "Para criar uma janela e mostrar o prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
@@ -164,7 +170,8 @@ inoremap # X<C-H>#
 vmap <BS> x
 
 " Insert ticks around word ... must NOT be on last char of word
-map tt ebi'<ESC>ea'<ESC>
+"map tt ebi'<ESC>ea'<ESC>
+map tt ysiw'
 map TT ebi{'<ESC>ea'}<ESC>
 
 " When in Visual mode, paste over the selected region...
@@ -189,8 +196,6 @@ endfunction
 
 
 
-
-
 "quick syntax toggler
 map ,sp :set syntax=perl<CR>
 map ,sm :set syntax=mason<CR>
@@ -206,7 +211,6 @@ vnoremap <silent> _x :!tidy -quiet -indent -xml -utf8 -w 120<cr>
 
 " set copiler to perlcritic; make for current file; open error window
 nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
-
 
 " ##### Shortcuts #####
 

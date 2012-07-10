@@ -7,6 +7,7 @@ My dotfiles and ~/bin
 ### soaper
 
 bash script
+
 My CLI soap client, needs some work but works for my use, receives two parameters, a file and a WSDL url
 
     soaper test.xml http://www.w3schools.com/webservices/tempconvert.asmx?op=FahrenheitToCelsius
@@ -14,6 +15,7 @@ My CLI soap client, needs some work but works for my use, receives two parameter
 ### view_csv
 
 Perl script
+
 Pretty viewer for csvs
 
     view_csv test.csv
@@ -21,6 +23,7 @@ Pretty viewer for csvs
 ### locate_mod.pl
 
 Perl script
+
 Useful to locate modules by mod name.
 
     locate_mod.pl Data::Dumper
