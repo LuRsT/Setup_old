@@ -1,6 +1,7 @@
+# -*- encoding: utf-8 -*-
 #
-# Author::  Christoph Kappel <unexist@dorfelite.net>
-# Version:: $Id: data/subtle.rb,v 2978 2011/08/02 11:16:25 unexist $
+# Author::  Christoph Kappel <unexist@subforge.org>
+# Version:: $Id: data/subtle.rb,v 3182 2012/02/04 16:39:33 unexist $
 # License:: GNU GPLv2
 #
 # = Subtle default configuration
@@ -19,30 +20,32 @@
 #
 
 # Window move/resize steps in pixel per keypress
-set :step, 5
+set :increase_step, 5
 
 # Window screen border snapping
-set :snap, 10
+set :border_snap, 10
 
 # Default starting gravity for windows. Comment out to use gravity of
 # currently active client
-set :gravity, :center
+set :default_gravity, :center
 
-# Make transient windows urgent
-set :urgent, false
+# Make dialog windows urgent and draw focus
+set :urgent_dialogs, false
 
 # Honor resize size hints globally
-set :resize, false
+set :honor_size_hints, false
 
-# Enable gravity tiling
-set :tiling, true
+# Enable gravity tiling for all gravities
+set :gravity_tiling, false
 
-# Font string either take from e.g. xfontsel or use xft
-#set :font, "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
-set :font, "xft:Inconsolata-10"
+# Enable click-to-focus focus model
+set :click_to_focus, false
 
-# Separator between sublets
-set :separator, "|"
+# Skip pointer movement on e.g. gravity change
+set :skip_pointer_warp, false
+
+# Skip pointer movement to urgent windows
+set :skip_urgent_warp, false
 
 # Set the WM_NAME of subtle (Java quirk)
 # set :wmname, "LG3D"
@@ -120,6 +123,8 @@ style :all do
   background  "#202020"
   border      "#303030", 0
   padding     0, 3
+  font        "xft:Inconsolata:pixelsize=13:antialias=true"
+  icon        "#757575"
 end
 
 # Style for the views
