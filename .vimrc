@@ -1,6 +1,9 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 
+" 256 Colors
+set t_Co=256
+
 call pathogen#infect()
 
 syntax on
@@ -10,11 +13,12 @@ filetype plugin indent on
 let &cpo=s:cpo_save
 unlet s:cpo_save
 
+
 "set title "Show filename in titlebar of window
 set cpo&vim
 set background=dark
 "BS past autoindents, line boundaries, and even the start of insertion
-set backspace=indent,eol,start 
+set backspace=indent,eol,start
 set cmdheight=2
 set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=en
