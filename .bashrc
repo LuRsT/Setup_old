@@ -30,6 +30,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias mocp='mocp -A'
 alias spacechem='cd bin/spacechem; mono SpaceChem.exe'
 alias halt='halt -p'
+alias ducks='du -cms * | sort -rn | head'
 
 export EDITOR=vim
 export HISTCONTROL=ignoredups
