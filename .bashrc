@@ -3,6 +3,11 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+# Source extra alias
+if [ -f ${HOME}/.alias ]; then
+    . ${HOME}/.alias
+fi
+
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
@@ -10,15 +15,15 @@ fi
 PS1='[\u@\e[0;31m\h\e[m \W]\[$(tput setaf 7)\]$ '
 
 alias vim="vim +normal\\'\\\""
+alias v='vim'
+alias vi='vim'
 alias :q='exit'
 alias ls='ls --color=auto'
 alias gcc='gcc -Werror -Wall -std=C99 -pedantic'
 alias cnetworkmanager='/home/lurst/bin/cnetworkmanager/cnetworkmanager'
 alias ll='ls -lash'
-alias v='vim'
 alias g='git'
 alias t='sh ~/bin/todo.sh'
-alias vi='vim'
 alias dropboxd='~/.dropbox-dist/dropboxd'
 alias mountserver='sshfs gfgoncalves@alien-11.isp.ip.pt:/servers /servers'
 alias tmux="TERM=screen-256color-bce tmux"
