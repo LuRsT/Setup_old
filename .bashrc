@@ -12,7 +12,7 @@ fi
 [ -z "$PS1" ] && return
 
 
-PS1='[\u@\e[0;31m\h\e[m \W]\[$(tput setaf 7)\]$ '
+PS1='[\u@\e[0;31m\h\e[m \W]\[$(tput setaf 7)\] \j$ '
 
 alias vim="vim +normal\\'\\\""
 alias v='vim'
@@ -23,6 +23,7 @@ alias gcc='gcc -Werror -Wall -std=C99 -pedantic'
 alias cnetworkmanager='/home/lurst/bin/cnetworkmanager/cnetworkmanager'
 alias ll='ls -lash'
 alias g='git'
+alias gcheck='git diff | grep "Dumper "'
 alias t='sh ~/bin/todo.sh'
 alias dropboxd='~/.dropbox-dist/dropboxd'
 alias mountserver='sshfs gfgoncalves@alien-11.isp.ip.pt:/servers /servers'
@@ -38,6 +39,9 @@ export HISTFILESIZE=10000 # Record last 10,000 commands
 export HISTSIZE=10000 # Record last 10,000 commands per session
 export PATH=$PATH:/$HOME/bin/
 export TERM=xterm-256color
+export LD_LIBRARY_PATH="/opt/java/jre/lib/i386"
+export PATH="$PATH/usr/share/java/apache-ant/bin/ant"
+
 
 complete -cf sudo
 complete -cf man
