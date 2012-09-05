@@ -1,6 +1,18 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 
+""" Function keys INDEX """"""""""""""""""""""
+"<F1> :call ToggleFocusMode()<CR>
+"<F3> :GrepBuffer<CR>
+"<F2> Hide Numbers and NERDTree
+"<F4> Paste
+"<F5> Refresh File
+"<F7> :NERDTreeToggle<CR>
+"<F8> :FufBuffer<CR>
+"<F11> :call ToggleContrast()<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+
 " 256 Colors
 set t_Co=256
 
@@ -18,7 +30,7 @@ unlet s:cpo_save
 set cpo&vim
 set background=dark
 "BS past autoindents, line boundaries, and even the start of insertion
-set backspace=indent,eol,start
+set backspace=indent,eol,start 
 set cmdheight=2
 set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=en
@@ -30,6 +42,7 @@ set shiftwidth=4
 set showcmd
 set tabstop=4
 set termencoding=utf-8
+set encoding=utf-8
 set updatetime=500
 set wildmenu
 set number
@@ -48,39 +61,40 @@ set smartcase
 
 set expandtab
 set shiftround
+highlight LineNr ctermfg=Grey
 
-"Save buffer automatically when changing files
+" Save buffer automatically when changing files
 set autowrite
 
-"Handle Mac and DOS line-endings but prefer Unix endings
+" Handle Mac and DOS line-endings but prefer Unix endings
 set fileformats=unix,mac,dos
 
-"NERDTree
+" NERDTree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-"Powerline
+" Powerline
 set laststatus=2
 let g:Powerline_symbols='unicode'
 
-"Para o grep
+" Grep
 set grepprg=/bin/grep
+let Grep_OpenQuickfixWindow = 1
 
-"Skeletons
+" Skeletons
 au bufnewfile *.pl 0r ~/.vim/skeletons/template.pl
 au bufnewfile *.pm 0r ~/.vim/skeletons/template.pm
 au bufnewfile *.t 0r ~/.vim/skeletons/template.t
 
-"Statusline catita
+"Nice Statusline
 "set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{fugitive#statusline()}
 "set laststatus=2
-"
 
 " Map Leader
 " Leader is mapped already to \
 "let mapleader = ","
 
-" Map arrow keys to useful stuff
+" Map Control+arrow keys to useful stuff
 map <C-Up>    <PageUp>
 map <C-Down>  <PageDown>
 map <C-Left>  gT
@@ -90,14 +104,13 @@ map <C-Right> gt
 nmap <C-l> gt
 
 " Easy navigation with splits
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Ack
 nnoremap <leader>a :Ack
 
-"Para criar uma janela e mostrar o prove
+"Create a window and shows prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
 
@@ -107,27 +120,16 @@ nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 map <F1> <Esc>
 imap <F1> <Esc>
 
-" Para toggle number ao mesmo tempo que toggla mouse
-"function ToggleMouse()
-"    if &mouse == ""
-"        set mouse=a
-"    else
-"        set mouse=
-"    endif
-"endfunction
+nmap <silent> <F1> :call ToggleFocusMode()<CR>
 
 " Para ficar em modo old style
 nmap <silent> <F2> :set invnumber<CR>:NERDTreeClose<CR> 
 
-" rot13 of current file -> play stuff!
-"map <F3> ggVGg?
-
-" Para grep
-let Grep_OpenQuickfixWindow = 1
+"Shows GrepBuffer
 nnoremap <silent> <F3> :GrepBuffer<CR>
 
-" Para togglar paste
-"set pastetoggle=<F4>
+" To toggle paste
+set pastetoggle=<F4>
 
 "Refresh current file
 nmap <silent> <F5> :e %<CR>
@@ -312,3 +314,46 @@ autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
 
 " Locate Module
 map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
+
+" Check http://laktek.com/2012/09/05/distraction-free-writing-with-vim/
+" turn-on distraction free writing mode for markdown files
+au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
+
+function! DistractionFreeWriting()
+    "set lines=40 columns=100           " size of the editable area
+    "set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color 
+    "set fullscreen                     " go to fullscreen editing mode
+    set background=light
+    set gfn=Cousine:h14                " font to use
+    set guioptions-=r                  " remove right scrollbar
+    set laststatus=0                   " don't show status line
+    set noruler                        " don't show ruler
+    set linebreak                      " break the lines on words
+    set nocursorline                   " don't show cursorline
+    set number
+    set numberwidth=10
+    highlight LineNr term=bold cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+    colorscheme iawriter
+endfunction
+
+
+""" FocusMode
+" From: http://paulrouget.com/e/vimdarkroom/
+function! ToggleFocusMode()
+  if (&foldcolumn != 12)
+    set laststatus=0
+    set numberwidth=10
+    set foldcolumn=12
+    set noruler
+    hi FoldColumn ctermbg=none
+    hi LineNr ctermfg=DarkGrey ctermbg=none
+    hi NonText ctermfg=0
+    set nocursorline
+  else
+    set laststatus=2
+    set numberwidth=4
+    set foldcolumn=0
+    set ruler
+    colorscheme zenburn "re-call your colorscheme
+  endif
+endfunc
