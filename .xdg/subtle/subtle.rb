@@ -1,7 +1,6 @@
-# -*- encoding: utf-8 -*-
 #
-# Author::  Christoph Kappel <unexist@subforge.org>
-# Version:: $Id: data/subtle.rb,v 3182 2012/02/04 16:39:33 unexist $
+# Author::  Christoph Kappel <unexist@dorfelite.net>
+# Version:: $Id: data/subtle.rb,v 2978 2011/08/02 11:16:25 unexist $
 # License:: GNU GPLv2
 #
 # = Subtle default configuration
@@ -20,32 +19,30 @@
 #
 
 # Window move/resize steps in pixel per keypress
-set :increase_step, 5
+set :step, 5
 
 # Window screen border snapping
-set :border_snap, 10
+set :snap, 10
 
 # Default starting gravity for windows. Comment out to use gravity of
 # currently active client
-set :default_gravity, :center
+set :gravity, :center
 
-# Make dialog windows urgent and draw focus
-set :urgent_dialogs, false
+# Make transient windows urgent
+set :urgent, false
 
 # Honor resize size hints globally
-set :honor_size_hints, false
+set :resize, false
 
-# Enable gravity tiling for all gravities
-set :gravity_tiling, false
+# Enable gravity tiling
+set :tiling, true
 
-# Enable click-to-focus focus model
-set :click_to_focus, false
+# Font string either take from e.g. xfontsel or use xft
+#set :font, "-*-*-medium-*-*-*-14-*-*-*-*-*-*-*"
+set :font, "xft:Inconsolata-10"
 
-# Skip pointer movement on e.g. gravity change
-set :skip_pointer_warp, false
-
-# Skip pointer movement to urgent windows
-set :skip_urgent_warp, false
+# Separator between sublets
+set :separator, "|"
 
 # Set the WM_NAME of subtle (Java quirk)
 # set :wmname, "LG3D"
@@ -121,10 +118,8 @@ end
 # Style for all style elements
 style :all do
   background  "#202020"
-  border      "#303030", 0
   padding     0, 3
   font        "xft:Inconsolata:pixelsize=13:antialias=true"
-  icon        "#757575"
 end
 
 # Style for the views
@@ -417,8 +412,8 @@ grab "W-x", [ :bottom,       :bottom66,       :bottom33       ]
 grab "W-c", [ :bottom_right, :bottom_right66, :bottom_right33 ]
 
 # Exec programs
-grab "W-Return", "xterm"
-grab "W-S-Return", "xterm -name dev"
+grab "W-Return", "urxvt"
+grab "W-S-Return", "urxvt -name dev"
 grab "W-S-x", "xscreensaver-command -lock"
 
 # Run Ruby lambdas
@@ -475,7 +470,7 @@ end
 # Example:
 #
 #  tag "terms" do
-#    match   "xterm|[u]?rxvt"
+#    match   "[u]?rxvt"
 #    gravity :center
 #  end
 #
@@ -608,11 +603,11 @@ tag "im" do
   match :instance => "pidgin" 
 end
 
-tag "music" do
-  match :instance => "music"
+tag "media" do
+  match :instance => "media|vlc"
 end
 
-#tag "terms",         "xterm"
+#tag "terms",         "urxvt"
 tag "fs",             "thunar"
 tag "browser",        "uzbl|opera|firefox|chromium"
 tag "games",          "dwarffortress|angband|Dwarf"
@@ -733,7 +728,7 @@ view "www",   "browser"
 view "dev",   "editor|devtools"
 view "fs",    "fs"
 view "im",    "im"
-view "music", "music"
+view "media", "media"
 view "games", "games"
 view "doc",   "doc"
 view "othr",  "gimp_.*"
@@ -884,7 +879,7 @@ grab "W-b" do
   if((c = Subtlext::Client["scratch"]))
     c.toggle_stick
     c.focus
-  elsif((c = Subtlext::Subtle.spawn("xterm -name scratch")))
+  elsif((c = Subtlext::Subtle.spawn("urxvt -name scratch")))
     c.tags  = [] 
     c.flags = [ :stick ]
   end

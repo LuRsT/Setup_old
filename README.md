@@ -2,6 +2,10 @@
 
 My dotfiles and ~/bin
 
+### Requirements
+
+clone of tmux-powerline in ~/dev folder
+
 ## ~/bin
 
 ### soaper
@@ -27,3 +31,4 @@ Perl script
 Useful to locate modules by mod name.
 
     locate_mod.pl Data::Dumper
+

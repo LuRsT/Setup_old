@@ -75,7 +75,7 @@ let NERDTreeDirArrows = 1
 
 " Powerline
 set laststatus=2
-let g:Powerline_symbols='unicode'
+let g:Powerline_symbols='fancy'
 
 " Grep
 set grepprg=/bin/grep

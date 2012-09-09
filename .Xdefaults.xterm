@@ -1,11 +1,12 @@
+XTerm*faceName: Inconsolata
+XTerm*faceSize: 10
+
+!XTerm*faceName: ProFont
+!XTerm*faceSize: 10
+
 Xcursor.theme: redglass
 Xcursor.size: 16
 
-URxvt*scrollBar_right: false
-URxvt*scrollBar: false
-URxvt*borderLess: false
-
-URxvt*font: xft:Monaco for Powerline:pixelsize=12
 
 ! tangoesque scheme
 ! from http://wiki.archlinux.org/index.php/Xdefaults
@@ -35,3 +36,5 @@ URxvt*font: xft:Monaco for Powerline:pixelsize=12
 ! LightGrey + White
 *color7: #cccccc
 *color15: #ffffff
+
+
