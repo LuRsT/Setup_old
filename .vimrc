@@ -90,15 +90,18 @@ au bufnewfile *.t 0r ~/.vim/skeletons/template.t
 "set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{fugitive#statusline()}
 "set laststatus=2
 
+" Set correct syntax to tt2 files
+au BufNewFile,BufRead *.tt2 set ft=tt2html
+
 " Map Leader
 " Leader is mapped already to \
 "let mapleader = ","
 
 " Map Control+arrow keys to useful stuff
-map <C-Up>    <PageUp>
-map <C-Down>  <PageDown>
-map <C-Left>  gT
-map <C-Right> gt
+nmap <C-Up>    <PageUp>
+nmap <C-Down>  <PageDown>
+nmap <C-Left>  gT
+nmap <C-Right> gt
 
 " Map tabs better
 nmap <C-l> gt
