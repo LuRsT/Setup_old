@@ -32,3 +32,19 @@ Useful to locate modules by mod name.
 
     locate_mod.pl Data::Dumper
 
+### barchart
+
+Perl script
+
+Displays a "barchart" for a text with duplicated string in it.
+
+    barchart sample_data.txt
+      00000000| Miniac
+             0| Bossy
+    0000000000| EPICAC
+            00| The Prime Radiant
+          0000| Multivac
+            00| MARAX
+      00000000| Mark V
+         00000| Mima
+
