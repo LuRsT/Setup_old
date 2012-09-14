@@ -8,7 +8,7 @@ use warnings;
 
 if ( !scalar @ARGV ) {
     print "Missing Argument.\n";
-    print "usage: perl barchart.pl file.txt";
+    print "usage: barchart file.txt\n";
     exit();
 }
 
