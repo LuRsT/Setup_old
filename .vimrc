@@ -360,3 +360,6 @@ function! ToggleFocusMode()
     colorscheme zenburn "re-call your colorscheme
   endif
 endfunc
+
+" Execute comands and print results in vim
+map ç :read !
