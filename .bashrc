@@ -13,6 +13,7 @@ fi
 
 
 PS1='[\u@\e[0;31m\h\e[m \W]\[$(tput setaf 7)\] \j$ '
+PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
 alias vim="vim +normal\\'\\\""
 alias v='vim'
@@ -38,9 +39,9 @@ export HISTCONTROL=ignoredups
 export HISTFILESIZE=10000 # Record last 10,000 commands
 export HISTSIZE=10000 # Record last 10,000 commands per session
 export PATH=$PATH:/$HOME/bin/
-export TERM=xterm-256color
 export LD_LIBRARY_PATH="/opt/java/jre/lib/i386"
-export PATH="$PATH/usr/share/java/apache-ant/bin/ant"
+export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
+export PATH="$PATH:/home/lurst/.gem/ruby/1.9.1/bin"
 
 
 complete -cf sudo

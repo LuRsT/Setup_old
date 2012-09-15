@@ -319,9 +319,6 @@ autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
 map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
 
 " Check http://laktek.com/2012/09/05/distraction-free-writing-with-vim/
-" turn-on distraction free writing mode for markdown files
-au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
-
 function! DistractionFreeWriting()
     "set lines=40 columns=100           " size of the editable area
     "set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color 
@@ -353,6 +350,7 @@ function! ToggleFocusMode()
     hi NonText ctermfg=0
     set nocursorline
   else
+    set cursorline
     set laststatus=2
     set numberwidth=4
     set foldcolumn=0
