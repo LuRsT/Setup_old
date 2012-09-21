@@ -48,3 +48,10 @@ Displays a "barchart" for a text with duplicated string in it.
       00000000| Mark V
          00000| Mima
 
+### pjson
+
+Python script
+
+    From http://igorgue.com/pjson/
+    Parse Json beatifully
+    Usage: echo '{"json":"obj"}' | pjson
