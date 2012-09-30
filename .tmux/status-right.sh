@@ -32,7 +32,7 @@ mail_count+=(["script"]="${segments_path}/maildir_count.sh")
 mail_count+=(["foreground"]="white")
 mail_count+=(["background"]="red")
 mail_count+=(["separator"]="${separator_left_bold}")
-register_segment "mail_count"
+#register_segment "mail_count"
 
 declare -A now_playing
 now_playing+=(["script"]="${segments_path}/np_mocp.sh")

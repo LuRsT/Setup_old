@@ -600,7 +600,7 @@ tag "devtools" do
 end
 
 tag "im" do
-  match :instance => "pidgin" 
+  match :instance => "pidgin|skype"
 end
 
 tag "media" do
@@ -608,6 +608,7 @@ tag "media" do
 end
 
 #tag "terms",         "urxvt"
+tag "data",           "gephi"
 tag "fs",             "thunar"
 tag "browser",        "uzbl|opera|firefox|chromium"
 tag "games",          "dwarffortress|angband|Dwarf"
@@ -731,7 +732,7 @@ view "im",    "im"
 view "media", "media"
 view "games", "games"
 view "doc",   "doc"
-view "othr",  "gimp_.*"
+view "othr",  "data|gimp_.*"
 view "vms",   "virtual_box.*"
 
 #
