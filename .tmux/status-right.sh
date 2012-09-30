@@ -10,6 +10,9 @@ source "${cwd}/config.sh"
 # Source lib functions.
 source "${cwd}/lib.sh"
 
+# Mute this statusbar?
+mute_status_check "right"
+
 segments_path="${cwd}/${segments_dir}"
 
 # Mute this statusbar?

@@ -360,4 +360,5 @@ function! ToggleFocusMode()
 endfunc
 
 " Execute comands and print results in vim
-map ç :read !
+"map ç :read !
+map ç :cexpr system(getline("."))<cr>:cope<cr><cr>
