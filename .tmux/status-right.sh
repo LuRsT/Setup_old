@@ -65,7 +65,7 @@ fi
 battery+=(["foreground"]="colour127")
 battery+=(["background"]="colour137")
 battery+=(["separator"]="${separator_left_bold}")
-register_segment "battery"
+#register_segment "battery"
 
 declare -A weather
 weather+=(["script"]="${segments_path}/weather.sh")
@@ -104,7 +104,7 @@ time+=(["foreground"]="colour136")
 time+=(["background"]="colour235")
 time+=(["separator"]="${separator_left_thin}")
 time+=(["separator_fg"]="default")
-register_segment "time"
+#register_segment "time"
 
 # Print the status line in the order of registration above.
 print_status_line_right
