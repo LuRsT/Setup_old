@@ -362,3 +362,29 @@ endfunc
 " Execute comands and print results in vim
 "map ç :read !
 map ç :cexpr system(getline("."))<cr>:cope<cr><cr>
+
+
+fu! Fix(global)
+    let hk_match = '\(\w\+\)\(\s*=>\)'
+    if search( hk_match ) != 0
+        execute a:global . "s/" . hk_match . "/'\\1'\\2/gc"
+    endif
+
+    let bw_match = '\(\%(\$\w\+\|->\){\)\s*\(\w\+\)\s*\}'
+    if search( bw_match ) != 0
+        execute a:global . "s/" . bw_match . "/\\1'\\2'}/gc"
+    endif
+
+    let fd_match = '\%(=cut\n\+\)\@<!\n\(sub\s\+\(\%(prepare_\)\?\(\w\+\)\)\)'
+    if search( fd_match ) != 0
+        execute a:global . 's/' . fd_match . '/\r=function \2 OPTIONS\r\rThis functions process the \3 step.\r\r=cut\r\r\1/gc'
+    endif
+
+    let sp_match = '\s\+$'
+    if search( sp_match ) != 0
+        execute a:global . 's/' . sp_match . '//gc'
+    endif
+endf
+
+au FileType perl nn <silent> _f :call Fix("%")<Enter>
+au FileType perl vn <silent> _f :call Fix("")<Enter>
