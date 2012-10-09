@@ -8,7 +8,7 @@ URxvt*borderLess: false
 !URxvt*font: xft:Monaco for Powerline:pixelsize=10
 !URxvt*font: xft:Terminus for Powerline:pixelsize=12
 !URxvt*font: xft:Anonymous\ Pro\ for\ Powerline:pixelsize=13
-URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=12
+URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=11
 
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault

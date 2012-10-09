@@ -43,6 +43,7 @@ export PATH=$PATH:/$HOME/bin/
 export LD_LIBRARY_PATH="/opt/java/jre/lib/i386"
 export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
 export PATH="$PATH:/home/lurst/.gem/ruby/1.9.1/bin"
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 
 complete -cf sudo
