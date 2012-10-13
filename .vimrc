@@ -157,6 +157,11 @@ endfunction
 nmap <silent> <F11> :call ToggleContrast()<CR>
 
 
+"=============[ Filetype stuff ]================================
+
+autocmd FileType perl   nn <silent> _F :g/sub<CR>
+autocmd FileType python nn <silent> _F :g/def<CR>
+
 "==============[ Perl Specific ]=================================
 
 
@@ -362,7 +367,6 @@ endfunc
 " Execute comands and print results in vim
 "map ç :read !
 map ç :cexpr system(getline("."))<cr>:cope<cr><cr>
-
 
 fu! Fix(global)
     let hk_match = '\(\w\+\)\(\s*=>\)'
