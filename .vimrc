@@ -30,7 +30,7 @@ unlet s:cpo_save
 set cpo&vim
 set background=dark
 "BS past autoindents, line boundaries, and even the start of insertion
-set backspace=indent,eol,start 
+set backspace=indent,eol,start
 set cmdheight=2
 set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=en
@@ -86,7 +86,7 @@ au bufnewfile *.pl 0r ~/.vim/skeletons/template.pl
 au bufnewfile *.pm 0r ~/.vim/skeletons/template.pm
 au bufnewfile *.t 0r ~/.vim/skeletons/template.t
 
-"Nice Statusline
+"Nice Statusline ( No need since I know use vim-powerline
 "set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{fugitive#statusline()}
 "set laststatus=2
 
@@ -159,7 +159,6 @@ nmap <silent> <F11> :call ToggleContrast()<CR>
 
 "==============[ Perl Specific ]=================================
 
-
 autocmd FileType perl setlocal keywordprg=perldoc\ -T\ -f
 autocmd FileType perl set autoindent|set smartindent
 
@@ -207,8 +206,6 @@ function! TransPaste(type)
     let @@ = reg_save
 endfunction
 
-
-
 "quick syntax toggler
 map ,sp :set syntax=perl<CR>
 map ,sm :set syntax=mason<CR>
@@ -239,7 +236,7 @@ iab cprint $c->log->debug( '<C-R>%' . Dumper() );<ESC>?()<CR>a
 iab ttdump <ESC>o[% USE Dumper %]<CR><pre>[% Dumper.dump_html(detalhe) %]</pre><ESC>?detalhe<CR>cw
 
 " search for use strict;
-" Include logger package  
+" Include logger package
 " create a logger global object, jump back to where we were
 iab mklogj <ESC>/use strict<CR>jjouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();<CR><ESC>:sleep 2<ESC>''
 map mklogj <ESC>/use strict<CR>jjouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();<CR><ESC>:sleep 2<ESC>''
@@ -250,21 +247,7 @@ map mklog <ESC>ouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();
 " Log stuff
 iab logthis $c->log->debug(Dumper cena);<ESC>?cena<CR>cw
 
-
 " ##### End Shortcuts #####
-
-" Add new highlight combinations...
-"highlight YELLOW_ON_BLACK ctermfg=yellow ctermbg=black
-"highlight WHITE_ON_RED ctermfg=white ctermbg=red
-
-" Track "faux" references...
-"function! BadRefs ()
-"    match WHITE_ON_RED /_ref[ ]*[[{(]\|_ref[ ]*-[^>]/
-"endfunction
-"call BadRefs()
-
-" reformat paragraph with no arguments:
-"map ** {!} perl -MText::Autoformat -e'autoformat({ all => 1 , justify => 'full' })' j<CR><CR>
 
 " pressing < or > will let you indent/unident selected lines
 vnoremap < <g<ESC>
@@ -303,17 +286,12 @@ augroup VisibleNaughtiness
     autocmd BufEnter  *       endif
 augroup END
 
+
+"====[ END Damian Presentation ]====
+
 " Execute files
 autocmd FileType perl   nmap W :!clear;echo;echo;perl %;echo;echo;echo<CR>
 autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
-
-"nmap <Space> <PageDown>
-
-
-"command! -buffer -bar -range=0 Run :call s:run(<count>, '<args>')
-" Do this, put in a function a toggler for folds
-" command! Folder   :call :setfoldopen=all<CR>:setfolopen=all<CR>
-" command! NoFolder :call :setfoldopen=none<CR>:setfolopen=none<CR>
 
 " Locate Module
 map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
@@ -335,7 +313,6 @@ function! DistractionFreeWriting()
     highlight LineNr term=bold cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
     colorscheme iawriter
 endfunction
-
 
 """ FocusMode
 " From: http://paulrouget.com/e/vimdarkroom/
@@ -360,10 +337,9 @@ function! ToggleFocusMode()
 endfunc
 
 " Execute comands and print results in vim
-"map ç :read !
 map ç :cexpr system(getline("."))<cr>:cope<cr><cr>
 
-
+" Function that fixes some perl problems
 fu! Fix(global)
     let hk_match = '\(\w\+\)\(\s*=>\)'
     if search( hk_match ) != 0
