@@ -157,6 +157,11 @@ endfunction
 nmap <silent> <F11> :call ToggleContrast()<CR>
 
 
+"=============[ Filetype stuff ]================================
+
+autocmd FileType perl   nn <silent> _F :g/sub<CR>
+autocmd FileType python nn <silent> _F :g/def<CR>
+
 "==============[ Perl Specific ]=================================
 
 autocmd FileType perl setlocal keywordprg=perldoc\ -T\ -f
