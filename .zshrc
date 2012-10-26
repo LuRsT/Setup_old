@@ -39,6 +39,11 @@ export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
 export PATH="$PATH:/home/lurst/.gem/ruby/1.9.1/bin"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# Source extra alias
+if [ -f ${HOME}/.alias ]; then
+    . ${HOME}/.alias
+fi
+
 # Load RVM into a shell session *as a function
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 

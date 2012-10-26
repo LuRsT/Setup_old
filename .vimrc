@@ -8,7 +8,7 @@ let s:cpo_save=&cpo
 "<F4> Paste
 "<F5> Refresh File
 "<F7> :NERDTreeToggle<CR>
-"<F8> :FufBuffer<CR>
+"<F8> :CtrlPBuffer<CR>
 "<F11> :call ToggleContrast()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -25,6 +25,7 @@ filetype plugin indent on
 let &cpo=s:cpo_save
 unlet s:cpo_save
 
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "set title "Show filename in titlebar of window
 set cpo&vim
@@ -141,7 +142,8 @@ nmap <silent> <F5> :e %<CR>
 nmap <silent> <F7> :NERDTreeToggle<CR>
 
 " Para search do buffer
-map <F8> :FufBuffer<CR>
+let g:ctrlp_map = '<F8>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 
 " Activate contrast
 function ToggleContrast()
