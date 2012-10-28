@@ -303,28 +303,18 @@ autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
 " Locate Module
 map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
 
-" Check http://laktek.com/2012/09/05/distraction-free-writing-with-vim/
-function! DistractionFreeWriting()
-    "set lines=40 columns=100           " size of the editable area
-    "set fuoptions=background:#00f5f6f6 " macvim specific setting for editor's background color 
-    "set fullscreen                     " go to fullscreen editing mode
-    set background=light
-    set gfn=Cousine:h14                " font to use
-    set guioptions-=r                  " remove right scrollbar
-    set laststatus=0                   " don't show status line
-    set noruler                        " don't show ruler
-    set linebreak                      " break the lines on words
-    set nocursorline                   " don't show cursorline
-    set number
-    set numberwidth=10
-    highlight LineNr term=bold cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
-    colorscheme iawriter
-endfunction
-
 """ FocusMode
 " From: http://paulrouget.com/e/vimdarkroom/
+" And:  http://laktek.com/2012/09/05/distraction-free-writing-with-vim/
 function! ToggleFocusMode()
   if (&foldcolumn != 12)
+    set background=light
+    set gfn=Cousine:h12                " font to use
+    highlight LineNr term=bold cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
+    colorscheme iawriter
+    set laststatus=0                   " don't show status line
+    set nonumber
+
     set laststatus=0
     set numberwidth=10
     set foldcolumn=12
@@ -339,6 +329,7 @@ function! ToggleFocusMode()
     set numberwidth=4
     set foldcolumn=0
     set ruler
+    set number
     colorscheme zenburn "re-call your colorscheme
   endif
 endfunc
@@ -371,3 +362,38 @@ endf
 
 au FileType perl nn <silent> _f :call Fix("%")<Enter>
 au FileType perl vn <silent> _f :call Fix("")<Enter>
+
+" show KNF violations
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%81v.*/
+"let c_space_errors=1
+
+
+" From https://opensource.conformal.com/wiki/vim
+function! s:ExecuteInShell(command, bang)
+    let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
+
+    if (_ != '')
+        let s:_ = _
+        let bufnr = bufnr('%')
+        let winnr = bufwinnr('^' . _ . '$')
+        silent! execute  winnr < 0 ? 'new ' . fnameescape(_) : winnr . 'wincmd w'
+        setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap
+        silent! :%d
+        let message = 'Execute ' . _ . '...'
+        call append(0, message)
+        echo message
+        silent! 2d | resize 1 | redraw
+        silent! execute 'silent! %!'. _
+        silent! execute 'resize ' . line('$')
+        silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
+        silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
+        silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
+        silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
+    endif
+endfunction
+
+command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
+cabbrev shell Shell
+
+
