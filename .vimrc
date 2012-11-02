@@ -161,7 +161,7 @@ nmap <silent> <F11> :call ToggleContrast()<CR>
 
 "=============[ Filetype stuff ]================================
 
-autocmd FileType perl   nn <silent> _F :g/^sub<CR>
+autocmd FileType perl   nn <silent> _F :g/^\s*sub<CR>
 autocmd FileType python nn <silent> _F :g/^\s*def<CR>
 
 "==============[ Perl Specific ]=================================
