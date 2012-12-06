@@ -104,6 +104,9 @@ nmap <C-Down>  <PageDown>
 nmap <C-Left>  gT
 nmap <C-Right> gt
 
+" Filter html
+nmap <C-p> :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encode; } $_=Encode::decode_utf8($_) unless Encode::is_utf8($_); $_=Encode::encode("ascii", $_, sub{HTML::Entities::encode_entities(chr shift)});'<CR>
+
 " Map tabs better
 nmap <C-l> gt
 
@@ -161,8 +164,8 @@ nmap <silent> <F11> :call ToggleContrast()<CR>
 
 "=============[ Filetype stuff ]================================
 
-autocmd FileType perl   nn <silent> _F :g/sub<CR>
-autocmd FileType python nn <silent> _F :g/def<CR>
+autocmd FileType perl   nn <silent> _F :g/^\s*sub<CR>
+autocmd FileType python nn <silent> _F :g/^\s*def<CR>
 
 "==============[ Perl Specific ]=================================
 

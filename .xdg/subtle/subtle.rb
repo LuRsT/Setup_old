@@ -609,10 +609,10 @@ end
 
 #tag "terms",         "urxvt"
 tag "data",           "gephi"
-tag "fs",             "thunar"
+tag "fs",             "thunar|spacefm"
 tag "browser",        "uzbl|opera|firefox|chromium"
 tag "games",          "dwarffortress|angband|Dwarf"
-tag "doc",            "xpdf|xchm|LibreOffice"
+tag "doc",            "xpdf|xchm|LibreOffice|epdfview"
 tag "virtual_box",    "virtualbox"
 
 # Placement
@@ -732,7 +732,7 @@ view "im",    "im"
 view "media", "media"
 view "games", "games"
 view "doc",   "doc"
-view "othr",  "data|gimp_.*"
+view "othr",  "data|gimp_.*|Dia*"
 view "vms",   "virtual_box.*"
 
 #
