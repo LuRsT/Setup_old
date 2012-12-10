@@ -9,7 +9,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 
 # XDG
-export XDG_CONFIG_HOME="~/.xdg"
+export XDG_CONFIG_HOME="${HOME}/.xdg"
 
 # Source alias
 if [ -f ${XDG_CONFIG_HOME}/.alias ]; then
