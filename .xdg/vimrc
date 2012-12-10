@@ -13,6 +13,8 @@ let s:cpo_save=&cpo
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 
+set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
+
 " 256 Colors
 set t_Co=256
 

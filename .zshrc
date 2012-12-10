@@ -9,6 +9,9 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="agnoster"
 
 # Alias
+export XDG_CONFIG_HOME="~/.xdg"
+export MYVIMRC="$XDG_CONFIG_HOME/vimrc"
+export VIMINIT='source $MYVIMRC'
 alias vim="vim +normal\\'\\\""
 alias v='vim'
 alias vi='vim'
