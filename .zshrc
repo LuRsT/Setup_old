@@ -39,6 +39,10 @@ export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
 export PATH="$PATH:/home/lurst/.gem/ruby/1.9.1/bin"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+wiki() {
+    dig +short txt $1.wp.dg.cx
+}
+
 # Source extra alias
 if [ -f ${HOME}/.alias ]; then
     . ${HOME}/.alias
