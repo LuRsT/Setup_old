@@ -15,10 +15,6 @@ mute_status_check "right"
 
 segments_path="${cwd}/${segments_dir}"
 
-# Mute this statusbar?
-mute_status_check "right"
-
-
 # Segment
 # Comment/uncomment the register function call to enable or disable a segment.
 
