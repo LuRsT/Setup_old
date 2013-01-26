@@ -16,6 +16,8 @@ My CLI soap client, needs some work but works for my use, receives two parameter
 
     soaper test.xml http://www.w3schools.com/webservices/tempconvert.asmx?op=FahrenheitToCelsius
 
+Note: soaper dislikes \n inside tags
+
 ### view_csv
 
 Perl script

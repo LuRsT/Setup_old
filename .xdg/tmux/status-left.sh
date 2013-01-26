@@ -15,9 +15,6 @@ mute_status_check "left"
 
 segments_path="${cwd}/${segments_dir}"
 
-# Mute this statusbar?
-mute_status_check "left"
-
 # Segments
 
 declare -A tmux_session_info
