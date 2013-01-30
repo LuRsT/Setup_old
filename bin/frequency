@@ -6,7 +6,7 @@ my %counts = () ;
 
 while ( my $cmd = <STDIN> ) {
     chomp $cmd ;
-    if ( !$counts{ $cmd } ) { $counts{ $cmd } = 1;  }
+    if ( !$counts{ $cmd } ) { $counts{ $cmd }  = 1; }
     else                    { $counts{ $cmd } += 1; }
 }
 

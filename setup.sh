@@ -11,4 +11,3 @@ for file in \.*; do
     fi
     echo ln -s "${file}" "${HOME}/${file}"
 done
-
