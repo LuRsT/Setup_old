@@ -4,16 +4,13 @@
 
 my %counts = () ;
 
-while (my $cmd = <STDIN>) {
+while ( my $cmd = <STDIN> ) {
     chomp $cmd ;
-    if (!$counts{$cmd}) {
-        $counts{$cmd} = 1 ;
-    } else {
-        $counts{$cmd}++ ;
-    }
+    if ( !$counts{ $cmd } ) { $counts{ $cmd } = 1;  }
+    else                    { $counts{ $cmd } += 1; }
 }
 
-foreach $k (keys %counts) {
-    my $count = $counts{$k} ;
+foreach $k ( keys %counts ) {
+    my $count = $counts{ $k } ;
     print "$count $k\n" ;
 }

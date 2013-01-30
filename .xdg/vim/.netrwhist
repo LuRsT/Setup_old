@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/lurst/dev/commonplace/config'
-let g:netrw_dirhist_2='/home/lurst/dev/fred_commonplace/public'
-let g:netrw_dirhist_3='walls'
-let g:netrw_dirhist_4='/home/lurst/dev/My-Setup/.vim/bundle/vim-unimpaired/plugin'
-let g:netrw_dirhist_5='/home/lurst/dev/commonplace/config'
