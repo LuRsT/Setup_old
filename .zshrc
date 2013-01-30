@@ -16,6 +16,10 @@ if [ -f ${XDG_CONFIG_HOME}/.alias ]; then
     . ${XDG_CONFIG_HOME}/.alias
 fi
 
+wiki() {
+    dig +short txt $1.wp.dg.cx
+}
+
 # Source extra alias
 if [ -f ${XDG_CONFIG_HOME}/.alias_extra ]; then
     . ${XDG_CONFIG_HOME}/.alias_extra
