@@ -9,6 +9,7 @@ let s:cpo_save=&cpo
 "<F5> Refresh File
 "<F7> :NERDTreeToggle<CR>
 "<F8> :CtrlPBuffer<CR>
+"<F9> PEP8 Check<CR>
 "<F11> :call ToggleContrast()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -149,6 +150,10 @@ nmap <silent> <F7> :NERDTreeToggle<CR>
 " Para search do buffer
 let g:ctrlp_map = '<F8>'
 let g:ctrlp_cmd = 'CtrlPBuffer'
+
+
+" Pep8 check
+let g:pep8_map  ='<F9>'
 
 " Activate contrast
 function ToggleContrast()
