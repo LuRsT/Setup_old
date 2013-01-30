@@ -1,3 +1,6 @@
+# XDG
+export XDG_CONFIG_HOME="${HOME}/.xdg"
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
