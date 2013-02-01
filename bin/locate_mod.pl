@@ -23,5 +23,3 @@ for my $mod ( @ARGV ) {
         print $path . ":1:1\n";
     }
 }
-
-

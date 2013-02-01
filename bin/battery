@@ -9,6 +9,8 @@ use Term::ANSIColor;
 
 sub show_batt {
     my $acpi   = shift;
+    my $output = shift || q{};
+
     my @graph  = qw{ ▁ ▂ ▃ ▅ ▇ };
     my @colors = qw{ green yellow red };
 
@@ -21,8 +23,16 @@ sub show_batt {
         else              { $c = $colors[2]; }
 
         my $string = sprintf ( "[%s] %s", $1 . '%', $g );
-        print colored [ $c ], $string . "\n";
+
+        if  ( $output eq 'tmux' ) {
+            return '#[fg=' . $c . ']' . $string . "\n";
+        }
+        return colored [ $c ], $string . "\n";
     }
 }
 
-show_batt( qx{ acpi } );
+my $arg = q{};
+
+if ( defined $ARGV[0] ) { $arg = $ARGV[0]; }
+
+print show_batt( qx{acpi}, $ARGV[0] );

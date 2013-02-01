@@ -22,7 +22,7 @@ Note: soaper dislikes \n inside tags
 
 Perl script
 
-Pretty viewer for csvs
+Pretty viewer for CSVs
 
     view_csv test.csv
 
