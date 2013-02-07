@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-battery tmux
+echo `battery tmux`
