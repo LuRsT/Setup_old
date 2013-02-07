@@ -4,7 +4,7 @@ My dotfiles and ~/bin
 
 ### Requirements
 
-clone of tmux-powerline in ~/dev folder
+"none"
 
 ## ~/bin
 
