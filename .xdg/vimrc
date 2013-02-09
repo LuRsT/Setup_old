@@ -9,9 +9,9 @@ let s:cpo_save=&cpo
 "<F5> Refresh File
 "<F7> :NERDTreeToggle<CR>
 "<F8> :CtrlPBuffer<CR>
-"<F9> PEP8 Check<CR>
+"<F9> Flake8 Check<CR>
 "<F11> :call ToggleContrast()<CR>
-
+"
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
@@ -65,6 +65,7 @@ set smartcase
 
 set expandtab
 set shiftround
+
 highlight LineNr ctermfg=Grey
 
 " Save buffer automatically when changing files
@@ -126,14 +127,14 @@ nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
 "==============[ F-KEYS ]==================================
 
-" lets not allow F1 open help files! -> doesn't work :(
+" F1 is new ESC
 map <F1> <Esc>
 imap <F1> <Esc>
 
 nmap <silent> <F1> :call ToggleFocusMode()<CR>
 
-" Para ficar em modo old style
-nmap <silent> <F2> :set invnumber<CR>:NERDTreeClose<CR> 
+" Change to 'old_style'
+nmap <silent> <F2> :set invnumber<CR>:NERDTreeClose<CR>
 
 "Shows GrepBuffer
 nnoremap <silent> <F3> :GrepBuffer<CR>
@@ -147,13 +148,12 @@ nmap <silent> <F5> :e %<CR>
 "Activate NERDTREE
 nmap <silent> <F7> :NERDTreeToggle<CR>
 
-" Para search do buffer
+" Search buffer
 let g:ctrlp_map = '<F8>'
 let g:ctrlp_cmd = 'CtrlPBuffer'
 
-
-" Pep8 check
-let g:pep8_map  ='<F9>'
+" Flake8 check
+autocmd FileType python map <buffer> <F9> :call Flake8()<CR>
 
 " Activate contrast
 function ToggleContrast()
