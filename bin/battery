@@ -8,8 +8,8 @@ use Data::Dumper;
 use Term::ANSIColor;
 
 sub show_batt {
-    my $acpi   = shift;
-    my $output = shift || q{};
+    my $acpi = shift;
+    my @args = @_;
 
     my @graph  = qw{ ▁ ▂ ▃ ▅ ▇ };
     my @colors = qw{ green yellow red };
@@ -24,15 +24,18 @@ sub show_batt {
 
         my $string = sprintf ( "[%s] %s", $1 . '%', $g );
 
-        if  ( $output eq 'tmux' ) {
-            return '#[fg=' . $c . ']' . $string . "\n";
+        for my $arg ( @args ) {
+            if  ( $arg eq 'mini' ) {
+                $string = sprintf ( "%s", $g );
+                next;
+            }
+            if  ( $arg eq 'tmux' ) {
+                return '#[fg=' . $c . ']' . $string . "\n";
+            }
         }
+
         return colored [ $c ], $string . "\n";
     }
 }
 
-my $arg = q{};
-
-if ( defined $ARGV[0] ) { $arg = $ARGV[0]; }
-
-print show_batt( qx{acpi}, $ARGV[0] );
+print show_batt( qx{acpi}, @ARGV );

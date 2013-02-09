@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo `battery tmux`
+echo 'B:' `battery mini tmux`
