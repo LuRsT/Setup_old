@@ -32,7 +32,7 @@ sub show_bar {
                 next;
             }
             if  ( $arg eq 'tmux' ) {
-                return '#[fg=' . $c . ']' . $string . "\n";
+                return '#[fg=' . $c . ']' . $string . "#[default]\n";
             }
         }
 
