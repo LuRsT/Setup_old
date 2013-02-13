@@ -5,18 +5,19 @@ use warnings;
 
 use Term::ANSIColor;
 
-my $regex = '([0-9]{1,3})\%';
-print show_bar( qx{acpi}, $regex, @ARGV );
+my $wicd_cmd = join("\n", qx{wicd-cli -d --wireless} );
+my $regex    = 'Quality: ([0-9]{1,3})';
+print show_bar( $wicd_cmd, $regex, @ARGV );
 
 sub show_bar {
-    my $acpi = shift;
-    my $regex = shift;
-    my @args = @_;
+    my $wicd_cmd = shift;
+    my $regex    = shift;
+    my @args     = @_;
 
     my @graph  = qw{ ▁ ▂ ▃ ▅ ▇ };
     my @colors = qw{ green yellow red };
 
-    if ( $acpi =~ /$regex/ ) {
+    if ( $wicd_cmd =~ /$regex/ ) {
         my $c;
         my $g = $graph[  ( ( $1 * 4) / 100 ) ];
 
