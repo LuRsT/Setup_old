@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo 'B:' `battery` 'W:' `wireless`
+echo '⚡' `battery` 'W:' `wireless`
