@@ -190,7 +190,7 @@ nmap <s-tab> v<
 vmap <tab> >gv
 vmap <s-tab> <gv
 
-"Para foldar tudo
+" Fold everything
 xmap za set foldmethod=indent
 
 "But not magic outdenting of comments...
@@ -204,31 +204,6 @@ vmap <BS> x
 map tt ysiw'
 map TT ebi{'<ESC>ea'}<ESC>
 
-" When in Visual mode, paste over the selected region...
-vmap <silent> <C-P> x:call TransPaste(visualmode())<CR>
-
-function! TransPaste(type)
-    " Remember the last yanked text...
-    let reg_save = @@
-
-    " Grab the MacOSX clipboard contents via a shell command...
-    let clipboard = system("pbtranspaste")
-
-    " Put them in the yank buffer...
-    call setreg('@', clipboard, a:type)
-
-    " Paste them...
-    silent exe "normal! P"
-
-    " Restore the previous yanked text...
-    let @@ = reg_save
-endfunction
-
-"quick syntax toggler
-map ,sp :set syntax=perl<CR>
-map ,sm :set syntax=mason<CR>
-map ,sh :set syntax=html<CR>
-
 " Little change to make it return to same line
 nnoremap <silent> _t ml:%!perltidy -q<cr><ESC>'l
 vnoremap <silent> _t :!perltidy -q<cr>
@@ -240,7 +215,7 @@ vnoremap <silent> _x :!tidy -quiet -indent -xml -utf8 -w 120<cr>
 " set copiler to perlcritic; make for current file; open error window
 nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
 
-" ##### Shortcuts #####
+"==============[ Shortcuts ]=================================
 
 " Insert common Perl code structures...
 " warn does not buffer
@@ -251,7 +226,7 @@ iab dprintd print STDERR sprintf("%s %s: %s\n", '<C-R>%','gil',Dumper() );<ESC>?
 iab cprint $c->log->debug( '<C-R>%' . Dumper() );<ESC>?()<CR>a
 
 " template toolkit
-iab ttdump <ESC>o[% USE Dumper %]<CR><pre>[% Dumper.dump_html(detalhe) %]</pre><ESC>?detalhe<CR>cw
+iab ttdump <ESC>o[% USE Dumper %]<CR><pre>[% Dumper.dump_html(detail) %]</pre><ESC>?detail<CR>cw
 
 " search for use strict;
 " Include logger package
@@ -263,9 +238,7 @@ iab mklog <ESC>ouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();
 map mklog <ESC>ouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();<ESC>
 
 " Log stuff
-iab logthis $c->log->debug(Dumper cena);<ESC>?cena<CR>cw
-
-" ##### End Shortcuts #####
+iab logthis $c->log->debug(Dumper stuff);<ESC>?stuff<CR>cw
 
 " pressing < or > will let you indent/unident selected lines
 vnoremap < <g<ESC>
